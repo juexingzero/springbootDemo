@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript">
+/* try{
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        window.location.href="/mobile/index#/login";
+    }
+}catch(e){} */
+</script>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <title>登录</title>
+    <link href="/layui/css/layui.css" rel="stylesheet" type="text/css"/>
+    <link href="/styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class='login'>
+    <div class='login_title'>
+        <span>管理员登录</span>
+    </div>
+    <div class='login_fields'>
+      <form action="login" method="post">
+        <div class='login_fields__user'>
+            <input name="userName" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value=""/>
+        </div>
+        <div class='login_fields__password'>
+            <input name="passWord" type="password" placeholder='密码' maxlength="16" autocomplete="off"/>
+        </div>
+        <div class='login_fields__password'>
+        </div>
+        <div class='login_fields__submit'>
+            <input type='button' value='登录'/>
+        </div>
+       </form>
+    </div>
+    <div class='success'>
+    	<input type="hidden" name="error" th:value="${error}"/>
+    </div>
+    <div class='disclaimer'>
+        <p>欢迎登录</p>
+    </div>
+</div>
+<div class='authent'>
+    <div class="loader" style="height: 44px;width: 44px;margin-left: 28px;">
+        <div class="loader-inner ball-clip-rotate-multiple">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <p>认证中...</p>
+</div>
+<div class="OverWindows"></div>
+<script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/login/login.js"></script>
+</body>
+</html>

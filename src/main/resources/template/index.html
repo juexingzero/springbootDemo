@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+	
+</head>
+
+<body >
+    <span>正在跳转登录，请稍后...</span>
+</body>
+<script src="/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//跳转到登录
+	setInterval("login()",3000);
+	return;
+})
+
+function login(){
+	window.location.href="/login/loginPage";
+}
+</script>
+</html>
