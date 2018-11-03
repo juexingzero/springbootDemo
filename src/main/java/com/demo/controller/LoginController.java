@@ -3,9 +3,11 @@ package com.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.demo.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +23,17 @@ import com.demo.service.SysUserService;
 @RequestMapping("login")
 public class LoginController {
 	
-	@Autowired
+	@Resource
 	private SysUserService sysUserService;
 	
-	@Autowired
+	@Resource
 	private SysRoleService sysRoleService;
 	
-	@Autowired
+	@Resource
 	private SysMenuService sysMenuService;
+
+	@Resource
+	private RedisService redisService;
 
 	@RequestMapping("/loginPage")
 	public String tologin() {
@@ -41,8 +46,7 @@ public class LoginController {
 		SysUser data = sysUserService.loginUser(userName, passWord);
 		if(data != null){
 			//将用户存入session中
-			HttpSession session = request.getSession(); 
-			session.setAttribute("user", data);
+			redisService.set("user", data);
 			SysRole role = new SysRole();
 			List<SysMenu> menus = new ArrayList<>();
 			//登录成功,读取角色
@@ -50,7 +54,7 @@ public class LoginController {
 			//暂时一个用户只有一个角色。。
 			if(roleList != null && roleList.size() >0){
 				role = roleList.get(0);
-				session.setAttribute("role", role);
+				redisService.set("role", role);
 				menus = sysMenuService.findMenuByRoleId(role.getRole_id());
 			}
 			request.setAttribute("userName", data.getUser_name());

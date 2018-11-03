@@ -9,10 +9,12 @@ import com.demo.mapper.SysRoleMapper;
 import com.demo.model.SysRole;
 import com.demo.service.SysRoleService;
 
+import javax.annotation.Resource;
+
 @Service
 public class SysRoleServiceImpl implements SysRoleService {
 	
-	@Autowired
+	@Resource
 	private SysRoleMapper sysRoleMapper;
 
 	@Override

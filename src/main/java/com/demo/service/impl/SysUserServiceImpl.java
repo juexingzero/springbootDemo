@@ -10,10 +10,12 @@ import com.demo.mapper.SysUserMapper;
 import com.demo.model.SysUser;
 import com.demo.service.SysUserService;
 
+import javax.annotation.Resource;
+
 @Service
 public class SysUserServiceImpl implements SysUserService {
 	
-	@Autowired
+	@Resource
 	private SysUserMapper sysUserMapper;
 
 	@Override

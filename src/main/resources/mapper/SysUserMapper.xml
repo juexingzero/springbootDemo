@@ -3,6 +3,6 @@
 <mapper namespace="com.demo.mapper.SysUserMapper">
     <select id="loginUser" parameterType="java.util.Map" resultType="com.demo.model.SysUser">
     	select * from sys_user where user_name = #{user_name}
-    	and pass_word = #{pass_word}
+    	and pass_word = #{pass_word} and  state = 1
     </select>
 </mapper>
